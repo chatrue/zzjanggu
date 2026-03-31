@@ -3,7 +3,7 @@ const app = document.getElementById('app');
 app.innerHTML = `
   <main class="app">
     <div class="title">
-      <h1>찐장구</h1>
+      <h1>zz장구</h1>
       <p>왼쪽은 북편 · 오른쪽은 채편</p>
     </div>
 
