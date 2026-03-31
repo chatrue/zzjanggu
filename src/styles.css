@@ -1,0 +1,201 @@
+:root {
+  color-scheme: dark;
+  --bg1: #1b120c;
+  --bg2: #3a2417;
+  --wood: #70452b;
+  --rim: #d2b07f;
+  --skin: #efe2c1;
+  --accent: #b3622e;
+  --text: #f7efe4;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body {
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background:
+    radial-gradient(circle at top, #5f3922 0%, rgba(95, 57, 34, 0) 40%),
+    linear-gradient(180deg, var(--bg2), var(--bg1));
+  color: var(--text);
+  overflow: hidden;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 14px 12px 18px;
+}
+
+.title {
+  text-align: center;
+  line-height: 1.15;
+}
+
+.title h1 {
+  margin: 0;
+  font-size: clamp(26px, 5vw, 44px);
+  letter-spacing: 0.04em;
+}
+
+.title p {
+  margin: 8px 0 0;
+  font-size: clamp(14px, 2.2vw, 18px);
+  opacity: 0.82;
+}
+
+.janggu-wrap {
+  width: min(99vw, 1320px);
+  aspect-ratio: 16 / 9;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.body-strap {
+  position: absolute;
+  width: 48%;
+  height: 16%;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #8c5a39, #5c341e);
+  box-shadow: inset 0 2px 8px rgba(255,255,255,0.12), 0 12px 24px rgba(0,0,0,0.32);
+}
+
+.rope {
+  position: absolute;
+  top: 19%;
+  bottom: 19%;
+  width: 2.2%;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #e8d0a0, #a77c4d);
+  box-shadow: inset 0 1px 3px rgba(255,255,255,0.55), 0 0 4px rgba(0,0,0,0.25);
+}
+
+.face {
+  position: absolute;
+  width: 41%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  border: min(1.2vw, 10px) solid var(--rim);
+  background:
+    radial-gradient(circle at 35% 30%, rgba(255,255,255,0.9), rgba(255,255,255,0) 23%),
+    radial-gradient(circle at 50% 55%, #fff8ea 0%, var(--skin) 62%, #d6bf96 100%);
+  box-shadow:
+    inset 0 6px 20px rgba(255,255,255,0.3),
+    inset 0 -12px 18px rgba(90,55,20,0.18),
+    0 14px 40px rgba(0,0,0,0.28);
+  display: grid;
+  place-items: center;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  cursor: pointer;
+  transition: transform 70ms ease, filter 120ms ease, box-shadow 120ms ease;
+}
+
+.face::before {
+  content: "";
+  position: absolute;
+  inset: 8%;
+  border-radius: 50%;
+  border: 2px solid rgba(91, 54, 25, 0.12);
+}
+
+.face.left { left: 1%; }
+.face.right { right: 1%; }
+
+.face-label {
+  position: relative;
+  z-index: 2;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(58, 36, 23, 0.34);
+  backdrop-filter: blur(4px);
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  font-size: clamp(16px, 2.3vw, 26px);
+}
+
+.face.subtle-right {
+  background:
+    radial-gradient(circle at 35% 30%, rgba(255,255,255,0.88), rgba(255,255,255,0) 24%),
+    radial-gradient(circle at 50% 55%, #faf1df 0%, #ead7b2 60%, #c8a46c 100%);
+}
+
+.face.active {
+  transform: scale(0.97);
+  filter: brightness(1.04);
+  box-shadow:
+    inset 0 8px 18px rgba(255,255,255,0.42),
+    inset 0 -10px 14px rgba(90,55,20,0.22),
+    0 8px 24px rgba(0,0,0,0.26);
+}
+
+.hint {
+  font-size: clamp(14px, 2vw, 18px);
+  opacity: 0.78;
+  text-align: center;
+}
+
+@media (orientation: portrait) {
+  .janggu-wrap {
+    width: min(98vw, 920px);
+    aspect-ratio: 1 / 1.25;
+  }
+
+  .body-strap {
+    width: 22%;
+    height: 36%;
+  }
+
+  .rope {
+    top: auto;
+    bottom: auto;
+    left: 50%;
+    width: 38%;
+    height: 2.2%;
+    transform: translateX(-50%);
+  }
+
+  .rope.v1 { top: 23%; }
+  .rope.v2 { top: 35%; }
+  .rope.v3 { top: 47%; }
+  .rope.v4 { top: 59%; }
+  .rope.v5 { top: 71%; }
+
+  .face {
+    width: 72%;
+  }
+
+  .face.left {
+    left: 50%;
+    top: 4%;
+    transform: translateX(-50%);
+  }
+
+  .face.right {
+    right: auto;
+    left: 50%;
+    bottom: 4%;
+    transform: translateX(-50%);
+  }
+
+  .face.active.left,
+  .face.active.right {
+    transform: translateX(-50%) scale(0.97);
+  }
+}
+
+.footer {
+  margin-top: 4px;
+  font-size: clamp(12px, 1.8vw, 15px);
+  opacity: 0.68;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
